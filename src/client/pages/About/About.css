@@ -1,0 +1,26 @@
+.about__values{
+  padding: 50px 0;
+  background-color: var(--background2-color);
+}
+
+.introduction{
+  padding-bottom: 30px;
+}
+
+.about__cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+.about__card{
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid transparent;
+}
+
+.services{
+  padding-top: 40px;
+}

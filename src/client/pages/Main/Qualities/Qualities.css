@@ -1,0 +1,17 @@
+.qualities{
+  padding: 80px 0 50px 0;
+}
+
+.qualities_row{
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+.qualities-item {
+  text-align: center;
+}
+.qualities-item p {
+  margin-top: 10px;
+}
+

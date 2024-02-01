@@ -1,0 +1,106 @@
+@font-face {
+  font-family: "Play";
+  font-weight: 700;
+  font-style: normal;
+  src: local("Play"), url("./fonts/Play/Play-700.woff2") format("woff2"),
+    url("./fonts/Play/Play-700.eot") format("eot");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto";
+  font-weight: 500;
+  font-style: normal;
+  src: local("Roboto"), url("./fonts/Roboto/Roboto-500.woff2") format("woff2"),
+    url("./fonts/Roboto/Roboto-500.woff") format("woff"),
+    url("./fonts/Roboto/Roboto-500.eot") format("eot");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-style: normal;
+  src: local("Roboto"), url("./fonts/Roboto/Roboto-400.woff2") format("woff2"),
+    url("./fonts/Roboto/Roboto-400.woff") format("woff"),
+    url("./fonts/Roboto/Roboto-400.eot") format("eot");
+  font-display: swap;
+}
+
+:root {
+  --background1-color: #fff;
+  --background2-color: rgb(248, 249, 250);
+  --text-color: #000;
+  --auxiliary-color: rgb(218, 71, 64);
+  --hover-color: #ff6257;
+  --third-color: #fff;
+
+  --text-font: "Roboto", sans-serif;
+  --title-font: "Play", sans-serif;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+.App{
+  background-color: var(--background1-color);
+  height: 100vh;
+  font-family: var(--text-font);
+  font-weight: 400;
+  color: var(--text-color);
+  font-size: 18px;
+}
+
+
+.conteiner{
+  padding: 30px 0;
+}
+.title{
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  font-family: var(--title-font);
+  font-size: 38px;
+  font-weight: 500;
+}
+
+.subtitle{
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  font-family: var(--title-font);
+  font-weight: 500;
+}
+.subtitle_span{
+  color: var(--auxiliary-color);
+}
+
+.icon{
+  margin-right: 10px;
+}
+
+.list li:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.link{
+  color: var(--text-color);
+  text-decoration: none;
+  &:hover{
+    color: var(--hover-color);
+  }
+}
+
+@media (max-width: 500px) {
+  .App{
+    font-size: 14px;
+  }
+  .title{
+    margin-bottom: 15px;
+    font-size: 28px;
+  }
+}

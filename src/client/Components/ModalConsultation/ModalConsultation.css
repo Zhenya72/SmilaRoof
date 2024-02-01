@@ -1,0 +1,21 @@
+.modal__footer{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.modal__alert{
+  width: 100%;
+  text-align: center;
+}
+
+.star{
+  color:var(--auxiliary-color);
+}
+
+.modal__awesome_icon{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
