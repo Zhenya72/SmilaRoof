@@ -15,8 +15,13 @@ function Consultation() {
             <span className='consultation__span'>Потрібна <br/>консультація?</span><br/>
             Телефонуй або замов консультацію
           </p>
-          <address className='consultation__phone'>
-            <Telephone className='icon consultation__icon'/><a className="link" href="tel:+380505121566">(050) 512-15-66</a>
+        <address className='consultation__phone'>
+          <Telephone className='icon consultation__icon' />
+          <div className='consultation__phone_number'>
+            <a className="link" href="tel:+380505121566">(050) 512-15-66</a>
+            <a className="link" href="tel:+380635121566">(063) 512-15-66</a>
+            <a className="link" href="tel:+380995121566">(099) 512-15-66</a>
+          </div>
           </address>
           <MyButton onClick={handleShow}>Замовити консультацію</MyButton>
           <ModalConsultation show={showModal} onHide={handleClose} />

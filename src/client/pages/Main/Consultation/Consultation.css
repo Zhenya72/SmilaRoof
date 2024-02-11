@@ -7,6 +7,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
 }
 
 .consultation__paragraph{
@@ -23,8 +24,15 @@
 .consultation__phone{
   font-size: 38px;
   white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
 }
-
+.consultation__phone_number{
+  display: flex;
+  flex-direction: column;
+}
 
 @media (max-width: 1200px) {
   .consultation__paragraph{

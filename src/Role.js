@@ -1,21 +1,19 @@
 import React from 'react';
 import { ActiveLinkProvider } from './client/Context/ActiveLinkContext'
-// import { useActiveRole } from './Context/ActiveRoleContext';
+import { useActiveRole } from './Context/ActiveRoleContext';
 import Header from './client/Header/Header';
 import Router from "./Router/Router";
 import Footer from './client//Footer/Footer';
 
 function Role() {
-  // const { activeRole } = useActiveRole();
+  const { activeRole } = useActiveRole();
   return (
         <ActiveLinkProvider>
-            {/* {activeRole === 'client' && <Header />} */}
-            <Header />
+            {activeRole === 'client' && <Header />}
             <main>
                 <Router/>
             </main>
-            <Footer />
-            {/* {activeRole === 'client' && <Footer />} */}
+            {activeRole === 'client' && <Footer />}
         </ActiveLinkProvider>
   );
 }

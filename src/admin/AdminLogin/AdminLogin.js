@@ -1,16 +1,18 @@
 import { useState } from 'react';
 import MyButton from '../../Components/MyButton/MyButton';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ErrorAlert from '../../Components/ErrorAlert/ErrorAlert';
 import LoginForm from './LoginForm'
+import {useAuth} from '../../Context/AuthContext'
+
 import './AdminLogin.css'
 function AdminLogin() {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
-  const history = useHistory();
-
+  const navigate = useNavigate()
+  const {loginIn} = useAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -25,7 +27,8 @@ function AdminLogin() {
         return;
       }
       if (login === 'admin' && password === 'admin') {
-        history.push('/admin/dashboard');
+        loginIn()
+        navigate('/admin/dashboard')
         setLogin('')
         setPassword('')
         setError(null);

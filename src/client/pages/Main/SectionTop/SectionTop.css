@@ -55,7 +55,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 150px 0 0 50px;
+  padding-left: 50px;
   z-index: 10;
 }
 .sectionTop__paragraph_one{
@@ -82,22 +82,17 @@
 
 @media (max-width: 1250px) {
   .sectionTop__conteiner{
-    padding: 100px 0 0 25px;
+    padding-left: 25px;
   }
 }
 @media (max-width: 1000px) {
   .sectionTop__conteiner{
-    padding: 75px 0 0 15px;
+    padding-left: 15px;
   }
 }
-@media (max-width: 850px) {
-  .sectionTop__conteiner{
-    padding: 25px 0 0 15px;
-  }
-}
+
 @media (max-width: 600px) {
   .sectionTop__conteiner{
-    padding: 0px 0 0 15px;
     text-align: center;
   }
   .sectionTop_title{
