@@ -5,7 +5,6 @@ import { TelephoneFill, Chat } from 'react-bootstrap-icons';
 import ModalConsultation from '../Components/ModalConsultation/ModalConsultation';
 import Logo from '../../img/logo.png';
 import { useActiveLink } from '../Context/ActiveLinkContext'
-
 function Menu() {
 
   const { activeLink, handleNavLinkClick } = useActiveLink();
@@ -17,6 +16,7 @@ function Menu() {
   const closeOffcanvas = () => {
     setShowOffcanvas(false);
   }
+  
   return (
         <Navbar expand="lg" className='bg-body-tertiary nav'>
           <Navbar.Brand as={NavLink} to="/">
@@ -46,7 +46,7 @@ function Menu() {
             <Offcanvas.Body className={`d-flex ${window.innerWidth >= 992 ? 'flex-row justify-content-between' : 'flex-column justify-content-around'} align-items-center pt-2`}>
               <Nav className="d-flex align-items-center pe-3">
               <Nav.Link
-                  style={{ color: activeLink === '/' ? 'var(--auxiliary-color)' : '' }}
+                  style={{ color: activeLink === '/' ? 'rgb(218, 71, 64)' : '' }}
                   className='menu_item'
                   as={NavLink}
                   to="/"
@@ -56,7 +56,7 @@ function Menu() {
                   }}
               >Головна</Nav.Link>
                <Nav.Link
-                style={{ color: activeLink === '/about' ? 'var(--auxiliary-color)' : '' }}
+                style={{ color: activeLink === '/about' ? 'rgb(218, 71, 64)' : '' }}
                 className='menu_item' 
                 as={NavLink}
                 to='/about'
@@ -68,7 +68,7 @@ function Menu() {
                 Про нас
               </Nav.Link>
               <Nav.Link
-                style={{ color: activeLink === '/delivery' ? 'var(--auxiliary-color)' : '' }}
+                style={{ color: activeLink === '/delivery' ? 'rgb(218, 71, 64)' : '' }}
                 className='menu_item'
                 as={NavLink}
                 to='/delivery'
@@ -80,7 +80,7 @@ function Menu() {
                 Доставка й оплата
               </Nav.Link>
               <Nav.Link
-                style={{ color: activeLink === '/contacts' ? 'var(--auxiliary-color)' : '' }}
+                style={{ color: activeLink === '/contacts' ? 'rgb(218, 71, 64)' : '' }}
                 className='menu_item'
                 as={NavLink}
                 to='/contacts'

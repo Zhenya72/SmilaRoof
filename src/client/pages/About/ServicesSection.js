@@ -1,5 +1,4 @@
 import { Container } from 'react-bootstrap';
-import './About.css'
 function ServicesSection() {
     return (
         <section className='services'>

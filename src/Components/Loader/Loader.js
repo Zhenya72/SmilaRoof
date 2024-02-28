@@ -1,6 +1,4 @@
-import st from './Loader.module.css';
-
-
+import st from './Loader.module.scss';
 function Loader() {
 
     return (

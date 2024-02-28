@@ -1,0 +1,29 @@
+@import "../../styles/variable.scss";
+.button {
+  background-color: $auxiliary-color;
+  color: $third-color;
+  border: 1px solid $auxiliary-color;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: $hover-color;
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(218, 71, 64, 0.5);
+}
+
+.button:active {
+  background-color: $active-color;
+}
+@media (max-width: 400px) {
+  .button {
+    font-size: 14px;
+  }
+}

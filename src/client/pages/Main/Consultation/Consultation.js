@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import { Telephone } from 'react-bootstrap-icons';
 import MyButton from '../../../../Components/MyButton/MyButton';
 import ModalConsultation from '../../../Components/ModalConsultation/ModalConsultation';
-import './Consultation.css'
+import './Consultation.scss'
 function Consultation() {
   const [showModal, setShowModal] = useState(false);
   const handleShow = () => setShowModal(true);

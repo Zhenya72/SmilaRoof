@@ -5,7 +5,7 @@ import execution from '../../../../img/execution.jpg';
 import quality from '../../../../img/quality.jpg';
 import range from '../../../../img/range.jpg';
 import service from '../../../../img/service.jpg';
-import './Qualities.css'
+import './Qualities.scss'
 function Qualities() {
   return (
       <section className='qualities'>

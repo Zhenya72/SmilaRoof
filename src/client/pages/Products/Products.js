@@ -1,5 +1,5 @@
 import { Container } from 'react-bootstrap';
-import './Products.css'
+import './Products.scss'
 function Products() {
     return (
       <Container className='conteiner'>        

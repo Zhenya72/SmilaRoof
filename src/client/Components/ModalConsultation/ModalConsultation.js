@@ -6,7 +6,7 @@ import emailjs from 'emailjs-com';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import ErrorAlert from '../../../Components/ErrorAlert/ErrorAlert';
-import './ModalConsultation.css'
+import './ModalConsultation.scss'
 const ModalConsultation = ({ show, onHide }) => {
   const initialFormData = {
     name: '',

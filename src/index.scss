@@ -1,0 +1,74 @@
+@import url("./styles/fonts.scss");
+@import "./styles/variable.scss";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  background-color: $background1-color;
+  height: 100vh;
+  font-family: $text-font;
+  font-weight: 400;
+  color: $text-color;
+  font-size: 18px;
+}
+
+.conteiner {
+  padding: 30px 0;
+}
+
+.title,
+.subtitle {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  font-family: $title-font;
+  font-weight: 500;
+}
+
+.title {
+  font-size: 38px;
+}
+
+.subtitle_span {
+  color: $auxiliary-color;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.list li:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.link {
+  color: $text-color;
+  text-decoration: none;
+  &:hover {
+    color: $hover-color;
+  }
+}
+
+.notData {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+}
+
+@media (max-width: 500px) {
+  .App {
+    font-size: 14px;
+  }
+  .title {
+    margin-bottom: 15px;
+    font-size: 28px;
+  }
+}

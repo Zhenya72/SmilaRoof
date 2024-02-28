@@ -2,7 +2,7 @@ import { Container } from 'react-bootstrap';
 import Address from './Address'
 import WorkingHours from './WorkingHours'
 import Map from './Map'
-import './Contacts.css';
+import './Contacts.scss';
 
 function Contacts() {
     return (

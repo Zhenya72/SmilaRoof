@@ -3,12 +3,12 @@ import axios from 'axios';
 import Loader from '../../Components/Loader/Loader';
 import { PlusCircle } from 'react-bootstrap-icons';
 import { Button, Modal, Form } from 'react-bootstrap';
-import ImageUploader from '../Components/ImageUploader';
 import apiUrl from '../../config'
+import ImageUploader from '../Components/ImageUploader';
 import ErrorAlert from '../../Components/ErrorAlert/ErrorAlert';
 import './Modal.scss'
 
-const ModalAddCategory = (props) => {
+const ModalAddSubcategory = (props) => {
   const [modalAddShow, setModalAddShow] = useState(false);
   const [name, setName] = useState('');  
   const [imageUrl, setImageUrl] = useState('');
@@ -27,13 +27,13 @@ const ModalAddCategory = (props) => {
     setImageUrl('');
   } 
 
-  const FetchAddCategory = async (e) => {
+  const FetchAddSubcategory = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
     try {
-      await axios.post(`${apiUrl}/categories`, {'name': name, 'imageUrl': imageUrl});
-      props.fetchCategory();
+      await axios.post(`${apiUrl}/subcategories`, {'name': name, 'imageUrl': imageUrl, 'category': props.categoryID});
+      props.fetchSubcategory(props.categoryID);
       handleModalAddClose();
     } catch (err) {
       if (err.response) {
@@ -41,7 +41,7 @@ const ModalAddCategory = (props) => {
       } else if (err.request) {
         setError('Помилка: неможливо встановити зв\'язок з сервером.');
       } else {
-        setError('Помилка додавання категорії');
+        setError('Помилка додавання підкатегорії');
       }
     } finally {
       setLoading(false);
@@ -56,13 +56,13 @@ const ModalAddCategory = (props) => {
         <div>
           <Modal show={modalAddShow} onHide={handleModalAddClose}>
             <Modal.Header closeButton>
-              <Modal.Title>Додати категорію</Modal.Title>
+              <Modal.Title>Додати підкатегорію</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <Form.Group className='mb-3'>
                 <Form.Control
                   type='text'
-                  placeholder='Введіть назву категорії'
+                  placeholder='Введіть назву підкатегорії'
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
@@ -79,7 +79,7 @@ const ModalAddCategory = (props) => {
               <Button variant="secondary" onClick={handleModalAddClose}>
                 Закрити
               </Button>
-              <Button variant="primary" onClick={FetchAddCategory}>
+              <Button variant="primary" onClick={FetchAddSubcategory}>
                 Додати
               </Button>
             </Modal.Footer>
@@ -89,7 +89,7 @@ const ModalAddCategory = (props) => {
   );
 };
 
-export default ModalAddCategory;
+export default ModalAddSubcategory;
 
 
 

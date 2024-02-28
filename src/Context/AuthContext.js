@@ -1,31 +1,43 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [authenticated, setAuthenticated] = useState(
-        sessionStorage.getItem('authenticated') === 'true'
-    );
+  const [authenticated, setAuthenticated] = useState(true);
 
-    const loginIn = () => {
-        setAuthenticated(true)
-    }
+  useEffect(() => {
+    const checkToken = async () => {
+      const token = await localStorage.getItem('authToken');
+      if (token) {
+        setAuthenticated(true);
+      } else {
+        setAuthenticated(false);
+      }
+    };
+    checkToken();
+  }, []);
 
-    const logout = () => {
-        setAuthenticated(false)
-    }
+  const loginIn = (token) => {
+    setAuthenticated(true);
+    localStorage.setItem('authToken', token);
+  };
 
-    return (
-        <AuthContext.Provider value={{ authenticated, loginIn, logout }}>
-            {children}
-        </AuthContext.Provider>
-    );
-}
+  const logout = () => {
+    setAuthenticated(false);
+    localStorage.removeItem('authToken');
+  };
+
+  return (
+    <AuthContext.Provider value={{ authenticated, loginIn, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
 export const useAuth = () => {
-    const context = useContext(AuthContext);
-    if (!context) {
-        throw new Error('useAuth must be used within an AuthProvider') 
-    }
-    return context;
-}
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
+};

@@ -1,0 +1,19 @@
+.card {
+  width: 18rem;
+}
+
+.card img {
+  object-fit: cover; 
+  height: 150px;
+}
+
+.card__title {
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.card__button{
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}

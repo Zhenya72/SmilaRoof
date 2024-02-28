@@ -1,4 +1,4 @@
-import { List, CaretDownFill, CartCheckFill, Search } from 'react-bootstrap-icons';
+import { List, CartCheckFill, Search } from 'react-bootstrap-icons';
 import { Container } from 'react-bootstrap';
 
 
@@ -8,9 +8,7 @@ function HeadProducts() {
     <div className="header__products">
       <Container className='header__products_conteiner'>
         <div className="header__products_button">
-          <List style={{fontSize:'25px'}}/>
-          <button>Каталог товарів</button>
-          <CaretDownFill/>
+          <button> <List style={{fontSize:'25px'}}/> Каталог товарів</button>
         </div>
         <div className="header__products_input">
           <Search style={{fontSize:'25px'}}/>

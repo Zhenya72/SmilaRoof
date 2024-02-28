@@ -1,0 +1,57 @@
+@import "../../../../styles//variable.scss";
+
+.order {
+  padding: 30px 0;
+}
+
+.order_block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.order_block img {
+  max-width: 500px;
+}
+.order__paragraph {
+  max-width: 300px;
+  padding: 20px;
+  position: relative;
+}
+
+.order__paragraph::before {
+  content: "";
+  width: 2px;
+  height: 100%;
+  background-color: $auxiliary-color;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.order__list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-end;
+  gap: 20px;
+  padding: 0;
+  padding-top: 40px;
+}
+
+.order__list li {
+  text-align: center;
+  position: relative;
+}
+.order__icon {
+  font-size: 50px;
+  margin-bottom: 10px;
+  color: $auxiliary-color;
+}
+
+@media (max-width: 770px) {
+  .order_block img {
+    display: none;
+  }
+}

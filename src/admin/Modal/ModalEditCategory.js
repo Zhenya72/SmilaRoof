@@ -1,62 +1,55 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Loader from '../../Components/Loader/Loader';
-import { PlusCircle } from 'react-bootstrap-icons';
 import { Button, Modal, Form } from 'react-bootstrap';
 import ImageUploader from '../Components/ImageUploader';
 import apiUrl from '../../config'
 import ErrorAlert from '../../Components/ErrorAlert/ErrorAlert';
 import './Modal.scss'
 
-const ModalAddCategory = (props) => {
-  const [modalAddShow, setModalAddShow] = useState(false);
+const ModalEditCategory = (props) => {
   const [name, setName] = useState('');  
   const [imageUrl, setImageUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  
-  const handleModalAddClose = () => {
-    setModalAddShow(false);
-    setName('');
-    setImageUrl('');
-  } 
-  const handleModalAddShow = () => {
-    setModalAddShow(true);
-    setName('');
-    setImageUrl('');
-  } 
 
-  const FetchAddCategory = async (e) => {
+  useEffect(() => {
+    if (props.name !== undefined) {
+    setName(props.name);
+  }
+  if (props.imageUrl !== undefined) {
+    setImageUrl(props.imageUrl);
+  }
+  }, [props.name, props.imageUrl]);
+
+  const FetchEditCategory = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
     try {
-      await axios.post(`${apiUrl}/categories`, {'name': name, 'imageUrl': imageUrl});
+      await axios.put(`${apiUrl}/categories/${props.id}`, {name, imageUrl});
       props.fetchCategory();
-      handleModalAddClose();
+      props.handleElitCloseModal();
     } catch (err) {
       if (err.response) {
         setError(err.response.data.message);
       } else if (err.request) {
         setError('Помилка: неможливо встановити зв\'язок з сервером.');
       } else {
-        setError('Помилка додавання категорії');
+        setError('Помилка редагування категорії');
       }
     } finally {
       setLoading(false);
     }
   };
     
-    
   return (
     <div>
       {loading && <Loader />}
-          <Button onClick={handleModalAddShow} className="me-2 add_button"><PlusCircle className="add_button__icons"/></Button>
-        <div>
-          <Modal show={modalAddShow} onHide={handleModalAddClose}>
+          <Modal show={props.modalEditShow} onHide={props.handleElitCloseModal}>
             <Modal.Header closeButton>
-              <Modal.Title>Додати категорію</Modal.Title>
+              <Modal.Title>Редагувати категорію</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <Form.Group className='mb-3'>
@@ -76,20 +69,19 @@ const ModalAddCategory = (props) => {
             </Modal.Body>
             <Modal.Footer>
               <ErrorAlert error={error} />
-              <Button variant="secondary" onClick={handleModalAddClose}>
+              <Button variant="secondary" onClick={props.handleElitCloseModal}>
                 Закрити
               </Button>
-              <Button variant="primary" onClick={FetchAddCategory}>
-                Додати
+              <Button variant="primary" onClick={FetchEditCategory}>
+                Обновити
               </Button>
             </Modal.Footer>
         </Modal>
-      </div>
     </div>
   );
 };
 
-export default ModalAddCategory;
+export default ModalEditCategory;
 
 
 

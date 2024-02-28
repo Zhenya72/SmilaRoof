@@ -6,7 +6,7 @@ import slide1 from '../../../../img/headSlider/slide1.jpg';
 import slide2 from '../../../../img/headSlider/slide2.jpg';
 import slide3 from '../../../../img/headSlider/slide3.jpg';
 import slide4 from '../../../../img/headSlider/slide4.jpg';
-import './SectionTop.css'
+import './SectionTop.scss'
 function SectionTop() {
   const [showModal, setShowModal] = useState(false);
   const handleShow = () => setShowModal(true);

@@ -7,9 +7,9 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-          <ActiveRoleProvider>
-            <Role/>
-          </ActiveRoleProvider>
+        <ActiveRoleProvider>
+          <Role/>
+        </ActiveRoleProvider>
       </BrowserRouter>
     </div>
   );

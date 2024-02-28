@@ -1,7 +1,7 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import { Icon1CircleFill, Icon2CircleFill, Icon3CircleFill, Icon4CircleFill, Icon5CircleFill, Icon6CircleFill } from 'react-bootstrap-icons';
 import man from '../../../../img/stages-man.png';
-import './Order.css'
+import './Order.scss'
 function Order() {
   return (
       <section className='order'>

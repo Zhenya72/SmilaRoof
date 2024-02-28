@@ -3,8 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { TelephoneFill, EnvelopeAtFill, GeoAltFill } from 'react-bootstrap-icons';
 import Logo from '../../img/logo.png';
 import { useActiveLink } from '../Context/ActiveLinkContext'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './Footer.css';
+import './Footer.scss';
 
 function Footer() {
   const { activeLink, handleNavLinkClick } = useActiveLink();
@@ -26,28 +25,28 @@ function Footer() {
               as={NavLink}
               to="/"
               onClick={() => handleNavLinkClick('/')}
-              style={{ color: activeLink === '/' ? 'var(--auxiliary-color)' : '' }}>
+              style={{ color: activeLink === '/' ? 'rgb(218, 71, 64)' : '' }}>
               Головна
             </Nav.Link>
             <Nav.Link
               as={NavLink}
               to="/about"
               onClick={() => handleNavLinkClick('/about')}
-              style={{ color: activeLink === '/about' ? 'var(--auxiliary-color)' : '' }}>
+              style={{ color: activeLink === '/about' ? 'rgb(218, 71, 64)' : '' }}>
               Про нас
             </Nav.Link>
             <Nav.Link
               as={NavLink}
               to="/delivery"
               onClick={() => handleNavLinkClick('/delivery')}
-              style={{ color: activeLink === '/delivery' ? 'var(--auxiliary-color)' : '' }}>
+              style={{ color: activeLink === '/delivery' ? 'rgb(218, 71, 64)' : '' }}>
               Доставка й оплата
             </Nav.Link>
             <Nav.Link
               as={NavLink}
               to="/contacts"
               onClick={() => handleNavLinkClick('/contacts')}
-              style={{ color: activeLink === '/contacts' ? 'var(--auxiliary-color)' : '' }}>
+              style={{ color: activeLink === '/contacts' ? 'rgb(218, 71, 64)' : '' }}>
               Контакти
             </Nav.Link>
           </Nav>

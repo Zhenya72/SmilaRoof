@@ -16,12 +16,10 @@ export const ActiveRoleProvider = ({ children }) => {
 
   const switchToAdmin = () => {
     setActiveRole('admin');
-    location.href = '/admin'; 
   };
 
   const switchToClient = () => {
     setActiveRole('client');
-    location.href = '/home'; 
   };
 
   return (
