@@ -1,5 +1,5 @@
 import st from './Search.module.scss'
-const Search = ({ searchTerm, handleSearch }) => {
+const Search = ({ searchTerm, handleSearch, isDisabled }) => {
   return (
     <input
       className={st.input}
@@ -7,6 +7,7 @@ const Search = ({ searchTerm, handleSearch }) => {
       placeholder="Пошук за назвою"
       value={searchTerm}
       onChange={handleSearch}
+      disabled={isDisabled}
     />
   );
 }

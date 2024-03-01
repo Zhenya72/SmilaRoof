@@ -6,3 +6,5 @@ const ErrorAlert = ({ error }) => {
 };
 
 export default ErrorAlert;
+
+
