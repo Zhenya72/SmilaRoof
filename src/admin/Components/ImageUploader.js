@@ -3,16 +3,15 @@ import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import apiUrl from '../../config';
 import Loader from '../../Components/Loader/Loader';
-import ErrorAlert from '../../Components/ErrorAlert/ErrorAlert';
+import { toast } from 'react-toastify';
+
 
 const ImageUploader = ({ imageUrl, setImageUrl }) => {
   const inputFileRef = useRef(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   const handleChangeFile = async (e) => {
     setLoading(true);
-    setError(null); 
     try {
       const allowedExtensions = ["jpg", "jpeg", "png", "gif"];
       const formData = new FormData();
@@ -27,14 +26,8 @@ const ImageUploader = ({ imageUrl, setImageUrl }) => {
       formData.append('image', file)
       const { data } = await axios.post(`${apiUrl}/upload`, formData)
       setImageUrl(data.url);
-    } catch (err) {
-      if (err.response) {
-        setError(err.response.data.message);
-      } else if (err.request) {
-        setError('Помилка: неможливо встановити зв\'язок з сервером.');
-      } else {
-        setError('Помилка при загрузці файлу!');
-      }
+    } catch (error) {
+      toast.error(`Помилка при загрузці файлу: ${error.message}`);
     } finally {
       setLoading(false);
     }
@@ -54,7 +47,6 @@ const ImageUploader = ({ imageUrl, setImageUrl }) => {
       />
       <Button onClick={() => inputFileRef.current.click()}>Завантажити зображення</Button>
       {loading && <Loader />}
-      <ErrorAlert error={error} /> 
       {imageUrl && (
         <Button className='btn-danger' onClick={onClickRemoveImage}>
           Видалити

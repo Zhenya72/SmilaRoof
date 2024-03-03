@@ -4,6 +4,20 @@ const ActiveLinkContext = createContext();
 
 export const ActiveLinkProvider = ({ children = null }) => {
   const [activeLink, setActiveLink] = useState(sessionStorage.getItem('activeLink') || '/');
+ 
+  
+  useEffect(() => {
+    const handlePopState = () => {
+      setActiveLink(window.location.pathname);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
+  
   
   useEffect(() => {
     sessionStorage.setItem('activeLink', activeLink);
@@ -13,6 +27,7 @@ export const ActiveLinkProvider = ({ children = null }) => {
     setActiveLink(link);
     window.scrollTo(0, 0);
   };
+
 
 
   return (

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import ModalAddItem from './Modal/ModalAddItem';
 import ModalEditItem from './Modal/ModalEditItem';
 import Loader from '../Components/Loader/Loader';
-import MyCard from '../Components/MyCard/MyCard';
+import AdminCard from '../Components/MyCard/AdminCard';
 import Search from '../Components/Search/Search';
 import { useGetCategories, useDeleteCategory, useVisibilityCategory, useEditCategory, useAddCategory } from '../queries/CategoryQueries';
 import { ToastContainer } from 'react-toastify';
@@ -57,7 +57,7 @@ function Admin() {
             filteredCategories
               .sort((a, b) => a.name.localeCompare(b.name))
               .map((cat) => (
-                <MyCard
+                <AdminCard
                   key={cat._id}
                   id={cat._id}
                   title={cat.name}

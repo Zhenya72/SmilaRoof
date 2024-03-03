@@ -2,8 +2,8 @@ import { useQueryClient, useMutation, useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import apiUrl from '../config'
 import { toast } from 'react-toastify';
+import { useSubcategories } from '../store/store';
 
-let isToastShown = false;
 const useGetSubcategories = (categoryID) => {
   const queryClient = useQueryClient();
   return useQuery({
@@ -13,11 +13,25 @@ const useGetSubcategories = (categoryID) => {
         const { data } = await axios.get(`${apiUrl}/subcategories/category/${categoryID}`);
         return data;
       } catch (error) {        
-        if (!isToastShown) {
-          toast.error(`Помилка при отриманні підкатегорій: ${error.message}`);
-          isToastShown = true;
-        }
+        toast.error(`Помилка при отриманні підкатегорій: ${error.message}`);
         queryClient.setQueriesData(['subcategories'], null);
+      }
+    },
+  });
+};
+const useGetSubcategoriesVisibility = () => {
+  const queryClient = useQueryClient();
+  const setSubcategories = useSubcategories((state) => state.setSubcategories);
+  return useQuery({
+    queryKey: ['subcategories', 'visibility'],
+    queryFn: async () => {
+      try {
+        const { data } = await axios.get(`${apiUrl}/subcategories/visibility`);
+        setSubcategories(data);
+        return data;
+      } catch (error) {        
+        toast.error(`Помилка при отриманні підкатегорій: ${error.message}`);
+        queryClient.setQueriesData(['subcategories', 'visibility'], null);
       }
     },
   });
@@ -104,7 +118,7 @@ const useVisibilitySubcategory = () => {
   });
 };
 
-export { useGetSubcategories, useGetSubcategory, useAddSubcategory, useEditSubcategory, useDeleteSubcategory, useVisibilitySubcategory };
+export { useGetSubcategories, useGetSubcategoriesVisibility, useGetSubcategory, useAddSubcategory, useEditSubcategory, useDeleteSubcategory, useVisibilitySubcategory };
 
 
 

@@ -2,6 +2,7 @@ import { useQueryClient, useMutation, useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import apiUrl from '../config'
 import { toast } from 'react-toastify';
+import { useCategories } from '../store/store';
 
 const useGetCategories = () => {
   const queryClient = useQueryClient();
@@ -19,6 +20,23 @@ const useGetCategories = () => {
   });
 };
 
+const useGetCategoryVisibility = () => {
+  const queryClient = useQueryClient();
+  const setCategories = useCategories((state) => state.setCategories);
+  return useQuery({
+    queryKey: ['categories', 'visibility'],
+    queryFn: async () => {
+      try {
+        const { data } = await axios.get(`${apiUrl}/categories/visibility`);
+        setCategories(data);
+        return data;
+      } catch (error) {        
+        toast.error(`Помилка при отриманні категорій: ${error.message}`);
+        queryClient.setQueriesData(['categories', 'visibility'], null);
+      }
+    },
+  });
+};
 const useGetCategory = (categoryId) => {
   const queryClient = useQueryClient();
   return useQuery({
@@ -96,7 +114,7 @@ const useVisibilityCategory = () => {
   });
 };
 
-export { useGetCategories, useGetCategory, useAddCategory, useEditCategory, useDeleteCategory, useVisibilityCategory };
+export { useGetCategories, useGetCategoryVisibility, useGetCategory, useAddCategory, useEditCategory, useDeleteCategory, useVisibilityCategory };
 
 
 

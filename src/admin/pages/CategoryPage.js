@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import ModalAddItem from '../Modal/ModalAddItem';
 import ModalEditItem from '../Modal/ModalEditItem';
 import Loader from '../../Components/Loader/Loader';
-import MyCard from '../../Components/MyCard/MyCard';
+import AdminCard from '../../Components/MyCard/AdminCard';
 import Search from '../../Components/Search/Search';
 import { useGetCategory } from '../../queries/CategoryQueries';
 import { useGetSubcategories, useDeleteSubcategory, useVisibilitySubcategory, useEditSubcategory, useAddSubcategory } from '../../queries/SubcategoryQueries';
@@ -26,8 +26,8 @@ const CategoryPage = () => {
   const addSubcategoryMutation = useAddSubcategory();
   const editSubcategoryMutation = useEditSubcategory();
 
-  const TransitionSubcategory = (categoryID, id) => {
-    navigate(`/admin/categories/${categoryID}/subcategory/${id}`);
+  const TransitionSubcategory = (id) => {
+    navigate(`/admin/subcategory/${id}`);
   }
 
   const filteredSubcategories = subcategories?.filter((cat) =>
@@ -57,7 +57,7 @@ const CategoryPage = () => {
           {filteredSubcategories && filteredSubcategories.length>0 &&
             filteredSubcategories.sort((a, b) => a.name.localeCompare(b.name))
               .map((cat) => (
-                <MyCard
+                <AdminCard
                   key={cat._id}
                   id={cat._id}
                   title={cat.name}
@@ -66,7 +66,7 @@ const CategoryPage = () => {
                   onDelete={() => deleteSubcategoryMutation.mutate(cat._id)}
                   onVisibility={() => visibilitySubcategoryMutation.mutate(cat._id)}
                   onEdit={() => handleEditSubcategory(cat._id, cat.name, cat.imageUrl)}
-                  onTransition={() => TransitionSubcategory(categoryID, cat._id)}
+                  onTransition={() => TransitionSubcategory(cat._id)}
                 />
               ))}
         </div>

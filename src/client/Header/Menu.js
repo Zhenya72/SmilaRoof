@@ -96,7 +96,7 @@ function Menu() {
                   <TelephoneFill className='icon' />
                   <div className='header__phone_number'>
                     <a className="link" href="tel:+380505121566">(050) 512-15-66</a>
-                    <a className="link" href="tel:+380635121566">(063) 512-15-66</a>
+                    <a className="link" href="tel:+380735121566">(073) 512-15-66</a>
                     <a className="link" href="tel:+380995121566">(099) 512-15-66</a>
                   </div>
                 </address>

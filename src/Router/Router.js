@@ -1,7 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import Main from '../client/pages/Main/Main'
 import About from '../client/pages/About/About'
-import Products from '../client/pages/Products/Products'
+import Categories from '../client/pages/Products/Categories'
+import Subcategories from "../client/pages/Products/Subcategories";
+import Products from "../client/pages/Products/Products";
 import Delivery from '../client/pages/Delivery/Delivery'
 import Contacts from '../client/pages/Contacts/Contacts'
 import Admin from '../admin/Admin'
@@ -20,7 +22,9 @@ function Router() {
         <Route path='about' element={<About />}/>
         <Route path='delivery' element={<Delivery />} />
         <Route path='contacts' element={<Contacts />} />
-        <Route path='products' element={<Products />} />
+        <Route path='products' element={<Categories />} />
+        <Route path='products/categories/:categoryID' element={<Subcategories />} />
+        <Route path='products/subcategory/:subcategoryID' element={<Products />} />
         
         <Route path='admin' element={<AdminLogin />} />            
         <Route path="admin/dashboard" element={
@@ -33,7 +37,8 @@ function Router() {
             <CategoryPage />
           </RequierAuth>
         } />
-        <Route path="admin/categories/:categoryID/subcategory/:subcategoryID" element={
+        {/* <Route path="admin/categories/:categoryID/subcategory/:subcategoryID" element={ */}
+        <Route path="admin/subcategory/:subcategoryID" element={
           <RequierAuth>
             <SubcategoryPage />
           </RequierAuth>
